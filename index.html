@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PageHawk – Website Change Monitor</title>
+<meta name="description" content="Chrome extension that notifies you when a web page changes: price drops, restocks, job posts, appointment slots. Private, runs in your browser.">
+<link rel="icon" href="logo.svg">
+<style>
+  :root { --bg:#fff; --text:#1b1b1f; --muted:#5d5d68; --panel:#f6f7f9; --border:#e3e4e8; --accent:#d9480f; --ink:#fff; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#141417; --text:#ececf1; --muted:#a0a0ab; --panel:#1f1f24; --border:#33333a; --accent:#ff7a3d; --ink:#1b1b1f; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+  nav { display:flex; justify-content:space-between; align-items:center; padding:18px 0; }
+  nav b { display:flex; gap:10px; align-items:center; font-size:19px; }
+  nav img { width:30px; height:30px; }
+  a { color: var(--accent); }
+  .btn { display:inline-block; background:var(--accent); color:var(--ink); padding:12px 22px; border-radius:10px; font-weight:700; text-decoration:none; }
+  .btn.ghost { background:transparent; color:var(--text); border:1px solid var(--border); }
+  .hero { padding: 48px 0 24px; }
+  h1 { font-size: clamp(32px, 6vw, 52px); line-height:1.1; margin:0 0 16px; letter-spacing:-.02em; }
+  .lead { font-size: 20px; color: var(--muted); max-width: 640px; }
+  .cta { display:flex; gap:12px; flex-wrap:wrap; margin: 28px 0; }
+  .shot { width:100%; border-radius:14px; border:1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,.18); }
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin: 40px 0; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:18px 20px; }
+  .card h3 { margin:0 0 6px; font-size:17px; }
+  .card p { margin:0; color:var(--muted); font-size:15px; }
+  table { width:100%; border-collapse: collapse; margin: 12px 0 40px; }
+  th, td { text-align:left; padding:12px; border-bottom:1px solid var(--border); }
+  th { font-size: 14px; color: var(--muted); font-weight:600; }
+  footer { padding: 30px 0 50px; color: var(--muted); font-size: 14px; border-top:1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><b><img src="logo.svg" alt="">PageHawk</b><a href="privacy.html">Privacy</a></nav>
+  <section class="hero">
+    <h1>Stop refreshing.<br>Get alerted when a page changes.</h1>
+    <p class="lead">PageHawk watches any web page, or just one part of it, and notifies you about price drops, restocks, new job posts and open appointment slots.</p>
+    <div class="cta">
+      <a class="btn" id="cws" href="#">Add to Chrome, it’s free</a>
+      <a class="btn ghost" href="#pricing">Pricing</a>
+    </div>
+  </section>
+
+  <div class="grid">
+    <div class="card"><h3>🎯 Pick an element</h3><p>Click the price, the stock label or a list. Get alerts only when that part changes.</p></div>
+    <div class="card"><h3>🔑 Keyword rules</h3><p>Alert only when “In stock” appears or “Sold out” disappears.</p></div>
+    <div class="card"><h3>🧹 No noise</h3><p>Clocks and counters that change on every load are ignored automatically.</p></div>
+    <div class="card"><h3>🔒 Private</h3><p>Runs in your browser. Watched pages never leave your computer. No account, no tracking.</p></div>
+  </div>
+
+  <h2 id="pricing">Pricing</h2>
+  <table>
+    <tr><th></th><th>Free</th><th>Pro</th></tr>
+    <tr><td>Monitors</td><td>3</td><td>Unlimited</td></tr>
+    <tr><td>Check frequency</td><td>Every hour</td><td>As often as every 5 minutes</td></tr>
+    <tr><td>Element picker, keyword rules, history</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Browsers per key</td><td>–</td><td>3</td></tr>
+    <tr><td>Price</td><td>$0</td><td><b>$4/month</b> or <b>$36/year</b></td></tr>
+  </table>
+  <p><a class="btn" id="buy" href="#">Get PageHawk Pro</a></p>
+  <p style="color:var(--muted);font-size:15px">Payments, invoices and taxes are handled by Lemon Squeezy, our merchant of record. Cancel anytime from your order emails.</p>
+
+  <footer>© 2026 PageHawk · <a href="privacy.html">Privacy policy</a> · Support: <a id="mail" href="https://github.com/giapnhgc/pagehawk/issues">GitHub Issues</a></footer>
+</div>
+<script>
+  // Filled in by scripts/package.mjs from extension/lib/config.js and store links.
+  const LINKS = {"cws":"#pricing","buy":"#pricing","mail":"https://github.com/giapnhgc/pagehawk/issues"};
+  document.getElementById('cws').href = LINKS.cws;
+  document.getElementById('buy').href = LINKS.buy;
+  document.getElementById('mail').href = LINKS.mail;
+</script>
+</body>
+</html>
